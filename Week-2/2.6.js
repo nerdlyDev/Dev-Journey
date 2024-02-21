@@ -121,3 +121,14 @@ console.log('hello'.startsWith('h')); // true
 
 
 
+// git log —merge: produce the list of commits that are causing the
+// conflict.
+// git diff: Identify the differences between the states repositories or files.
+// git checkout: Used to undo the changes made to the file, or for
+// changing branches.
+// git reset --mixed: Used to undo changes to the working directory and
+// staging area.
+// git merge --abort: Helps in exiting the merge process and returning
+// back to the state before the merging began.
+// git reset: Used at the time of merge conflict to reset the conflicted files
+// to their original state.
