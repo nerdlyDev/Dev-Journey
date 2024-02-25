@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+    <div>
+        <h1>Counter: <span id="count">0</span></h1>       
+    </div>
+    <script>
+    let count = 0;
+
+    function updateCounter() {
+      count++;
+      document.getElementById("count").textContent = count;
+
+      if (count === 10) {
+        clearInterval(intervalId); // Stop the counter when it reaches 10
+      }
+    }
+
+    const intervalId = setInterval(updateCounter, 1000); // Update every second
+    </script>
+</body>
+</html>
