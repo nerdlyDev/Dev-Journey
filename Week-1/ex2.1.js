@@ -295,4 +295,4 @@ function objectMethods(obj) {
   };
   
   objectMethods(sampleObject);
-  
+}
