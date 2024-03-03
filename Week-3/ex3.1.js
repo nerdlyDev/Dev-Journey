@@ -15,11 +15,11 @@ app.get("/health-checkup", function(req, res){
     const kidneyId = req.query.kidneyId;
 
 
-    if(username === "Devesh" && password === "pass") {// do something with kidney here
+    if(username != "Devesh" || password != "pass") {// do something with kidney here
         res.status(400).json({"msg":"Something up with your inputs "})
         return
     }
-        if (kidneyId == 1 || kidneyId == 2){
+        if (kidneyId != 1 && kidneyId != 2){
             res.status(400).json({"msg":"Something up with your inputs "})
         return  
   } 
