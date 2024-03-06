@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+        function getAnimalData(){
+            const response = fetch('https://fakerapi.it/api/v1/persons')
+            // console.log(response);
+            //By default fetch function takes get request, and returns promise,
+            // To send get and other request we can use .then and other methods
+            // In this example by default response is in json format.
+            .then(function(response){ // use more cleaner promisefied way
+                //const json = response.json()
+                //console.log(json);
+                response.json()
+                .then(function(json){
+                    console.log(json);  // {status: 'OK', code: 200, total: 10, data: Array(10)}
+                })
+            })
+
+        }
+*/
+            // Async Await syntax, prefer to use this only
+            // Recommended to use this way of fetching data
+            async function getAnimalData(){
+                const response = await fetch('https://fakerapi.it/api/v1/persons') // this is how we call an api using fetch and access the data from it, and How frontend and backend communicate.
+                const json = await response.json()
+                console.log(json);
+            }
+    </script>
+    <button onclick="getAnimalData()">Get Animal Data</button>
+</body>
+</html>
