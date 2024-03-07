@@ -24,6 +24,7 @@
 
  // Local storage: It is a web storage that is used to store data in the browser. It is used to store data(includes JWT, etc) in the browser.
 
+ /*
 
 const express = require("express");
 const jwt = require("jsonwebtoken");
@@ -32,7 +33,7 @@ const jwtPassword = "123456";
 const app = express();
 app.use(express.json());
 
-const ALL_USERS = [
+const ALL_USERS = [ // hard coded data for testing
     {
         username: "Devesh123@gmail.com",
         password: "pass@1",
@@ -101,3 +102,142 @@ app.get("/users", function(req,res) {
 });
 
 app.listen(3000);
+
+*/
+
+
+// ----------  Databases --------------
+
+// Browser ---> Backend <---> Database
+
+// Databases like:
+
+// Graph Databases: It is a database that is used to store data in the form of a graph.Used in social media applications.
+
+// Vector Databases: It is a database that is used to store data in the form of a vector. It is mostly used in ML.
+
+// NoSQL Databases: It is a database that is used to store data in the form of a NoSQL. Currently gaining popularity in web development.
+
+// SQL Databases: It is a database that is used to store data in the form of a SQL. It is mostly used in web development. And going to remain as the backbone of web development. Most of the open source projects are on SQL databases.
+
+
+
+// --------------MongoDB-----------------
+
+/* MongoDB lets you create databases.
+
+   In each DB, It lets you create tables(collections).
+
+   In each table, It lets you dump JSON data.
+   It is schemaless*.
+
+   It scales well and is a decent choice for most use cases .
+*/
+
+// Mongoose is a MongoDB driver for Node.js or simply said a javascript library for interacting with MongoDB.
+
+/*
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const jwtPassword = "123456";
+
+mongoose.connect(" mongodb+srv://Admin:WbUxYXjcroJppJrh@cluster.efhd2l0.mongodb.net/");
+
+const User = mongoose.model("User", {
+    username: String,
+    password: String,
+    name: String,
+});
+
+const app = express();
+app.use(express.json());
+
+function userExists(username, password){
+    // should check in database
+}
+
+app.post("/login", function(req, res){
+    const username = req.body.username;
+    const password = req.body.password;
+    
+    if(!userExists(username, password)){
+        res.status(400).json({
+            msg: "User does not exist"
+        });
+    }
+    let token = jwt.sign({username, password}, jwtPassword); // JWT'S sign function
+    res.json({
+        token
+    });
+});
+
+app.listen(3000);
+
+*/
+
+/*
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb+srv://Admin:WbUxYXjcroJppJrh@cluster.efhd2l0.mongodb.net/learnMongoose");
+
+const user = mongoose.model("Users", {
+    username: String,
+    password: String,
+    name: String,
+});
+
+const user1 = new user({
+    username: "Nikhil123@gmail.com",
+    password: "pass@3",
+    name: "Nikhil",
+});
+
+user1.save();
+
+*/
+
+
+
+const express = require("express");
+const mongoose = require("mongoose");
+const app = express();
+
+app.use(express.json());
+
+mongoose.connect("mongodb+srv://Admin:WbUxYXjcroJppJrh@cluster.efhd2l0.mongodb.net/learnMongoose");
+
+const user = mongoose.model("Users", {
+    email: String,
+    password: String,
+    name: String,
+});
+
+app.post("/signup", async function(req, res){
+    const email = req.body.email;
+    const password = req.body.password;
+    const name = req.body.name;
+
+    const existingUser = await user.findOne({email});
+    if(existingUser){
+        return res.status(400).json({
+            msg: "User already exists"
+        });
+    }
+
+    const user = new User({
+        name: name,
+        email: email,
+        password: password
+    });
+
+    user.save();
+    res.json({
+        "msg":"User created successfully"
+    })
+})
+
+app.listen(3000)
+
+
+//ToDO: Create an CRUDE httpfied app and test it with postman where user can create, read, update and delete.
