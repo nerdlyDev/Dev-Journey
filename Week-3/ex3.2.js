@@ -30,6 +30,7 @@ const jwt = require("jsonwebtoken");
 const jwtPassword = "123456";
 
 const app = express();
+app.use(express.json());
 
 const ALL_USERS = [
     {
@@ -50,7 +51,17 @@ const ALL_USERS = [
 ];
 
 function userExists(username, password){
+// Write logic to return true or false if user exists or not
+// In ALL_USERS array
+// Hard TODO: try to use the find function in js
 
+let userExists = false;
+for (let i = 0; i<ALL_USERS.length; i++){
+    if(ALL_USERS[i].username == username && ALL_USERS[i].password == password){
+        userExists = true;
+    }
+}
+return userExists;
 }
 
 app.post("/login", function(req, res){
@@ -60,10 +71,9 @@ app.post("/login", function(req, res){
     if(!userExists(username, password)){
         res.status(400).json({
             msg: "User does not exist"
-        })
-        return
+        });
     }
-    const token = jwt.sign({username, password}, "dash-dash");
+    let token = jwt.sign({username, password}, jwtPassword); // JWT'S sign function
     res.json({
         token
     });
@@ -72,9 +82,17 @@ app.post("/login", function(req, res){
 app.get("/users", function(req,res) {
     const token = req.headers.authorization;
     try{
-        const decoded = jwt.verify(token, jwtPassword);
+        const decoded = jwt.verify(token, jwtPassword); // JWT's verify function 
         const username = decoded.username;
         // return a list of users other than this username
+        res.json({
+            users: ALL_USERS.filter( function(value){
+                if(value.username == username){
+                    return false;
+                }
+                return true;
+            }) // filtering out the username from the list of users
+        })
     } catch(err){
         return res.status(400).json({
             msg: "Invalid token",
