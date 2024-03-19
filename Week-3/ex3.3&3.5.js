@@ -144,3 +144,48 @@ Bubbling
 Capturing
 */
 
+
+
+// 1.Generating(sign) JWT
+// 2.Decoding JWT
+// 3.Verifying JWT
+
+// The backend who generated the JWT can only verify the JWT
+// Everyone can decode the JWT
+
+//const jwt = require("jsonwebtoken");
+
+/*const value = {
+    name: "Devesh",
+    acNo: 12345
+}
+
+// jwt
+//const token = jwt.sign(value, "secretKey");
+//console.log(token);
+// This token has been generated using this secretKey, and hence this token can only be verified using this secretKey
+
+const varifiedToken = jwt.verify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGV2ZXNoIiwiYWNObyI6MTIzNDUsImlhdCI6MTcxMDg3NjgyMH0.R7ByaNiNB6eSVKdARKS6p0xZbeWC0GPBkW3RcNcuoPU","secret");
+console.log(varifiedToken);
+// While the secretkey is the same, the token can be verified using the same secretkey
+*/
+
+
+//------------ Try catch in JS ---------------
+
+// The try block lets you define a block of code to be tested for errors.
+// The catch block lets you handle the error.
+// The finally block lets you execute code, after try and catch, regardless of the result.
+
+
+try {
+     let a;
+     console.log(a.length);
+     console.log("I am inside try block");
+} catch(e){
+    console.log("I am inside catch block");
+}
+console.log("I am outside try and catch block");
+
+
+
