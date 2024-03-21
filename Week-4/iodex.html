@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<script>
+    function populateDiv(){
+        const element= document.getElementById("finalSum") 
+        // Here the element is DOM object which is referencing to the finalSum
+       // element.innerHTML = "Hello" // This how DOM lets us manipulate HTML page using JS
+       const a = document.getElementById("firstNumber").value; // This is how we can get value from HTML input box
+       const b = document.getElementById("secondNumber").value;
+       const sum = Number(a) + Number(b);
+       element.innerHTML = sum
+
+    }
+</script>
+<body>
+    <input id="firstNumber" type = "text" placeholder="First Number">
+    <br><br>
+    <input id="secondNumber" type = "text" placeholder="Second Number"> 
+    <br><br>
+    <button onclick = "populateDiv()">Calculate</button> 
+    <br><br>
+    <div id ="finalSum"></div>
+</body>
+</html>

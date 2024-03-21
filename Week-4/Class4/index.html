@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- 
+<html> 
+    <body>
+        <input type="text" placeholder="Number1"> 
+        <br><br>
+        <input type="text" placeholder="Number2">
+        <br><br>
+        <button onclick="calculateSum()">Calculate Sum</button> 
+        <br><br>
+        <script>
+            function calculateSum(){
+                let num1 = document.querySelector("input[placeholder='Number1']").value;
+                let num2 = document.querySelector("input[placeholder='Number2']").value;
+                let sum = Number(num1) + Number(num2);
+                alert(sum);
+            }
+        </script>
+    </body>
+</html> -->
+
+<!-- How we used Class and ID -->
+<!-- <html>
+    <style>
+        .container{
+            background-color: cornflowerblue;
+            font-size: 100;
+            padding: 20px;
+            margin: 20px;
+            color:darkslategray;
+        }
+    </style>
+    <body>
+        <div class = "container">
+            hi there
+        </div>
+        <div class = "container">
+            Hey Bro 
+        </div>
+
+    </body>
+</html> -->
+
+<!-- 
+To make a html page dynamic we use javascript or especially DOM -->
+<html>
+    <script>
+        function populateDiv(){
+           const element= document.getElementById("finalSum")
+            console.log(element)
+        }
+    </script>
+    <body>
+        <input type = "text" placeholder="First Number">
+        <br><br>
+        <input type = "text" placeholder="Second Number"> 
+        <br><br>
+        <button onclick = "populateDiv()">Calculate</button> 
+        <br><br>
+        <div id ="finalSum"></div>
+    </body>
+</html>
+
+
+
