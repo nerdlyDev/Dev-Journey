@@ -1,6 +1,6 @@
 const zod = require("zod");
 
-const createTodoSchema = zod.object({
+const createTodo = zod.object({
     title: zod.string(),
     description: zod.string()
 })
