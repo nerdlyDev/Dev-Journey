@@ -1,0 +1,84 @@
+Side effects in React:
+
+* In React, the concept of side effects encompasses any operations that reach outside the functional scope of a React component. These operations can affect other components, interact with the browser, or perform asynchronous data fetching.
+
+
+**Functional Scope:**
+
+- React components are typically written as functional components, meaning they are pure functions that take props as input and return JSX as output.
+
+**Side Effects:**
+
+- Side effects are operations that happen **outside** the functional scope of a component. They can:
+    - **Modify the DOM directly:** This is generally discouraged in React as it bypasses React's virtual DOM diffing mechanism.
+    - **Interact with the browser API:** This includes things like making network requests (e.g., fetching data from a server), manipulating the browser's localStorage, or setting timers.
+    - **Cause state changes outside of the component:** Changing state directly without using the appropriate state management techniques (like `useState` or `useReducer`) is considered a side effect.
+
+**Examples of Side Effects:**
+
+- **Fetching data from an API:** This requires making a network request using libraries like `fetch` or `axios`.
+- **Setting a timer:** You might use `setTimeout` or `setInterval` to trigger actions after a certain delay.
+- **Subscribing to an event:** This could involve using browser events or events from external libraries.
+- **Manually manipulating the DOM:** While not recommended, you could directly change elements using DOM methods like `document.getElementById`.
+
+**Why are Side Effects a Concern?**
+
+- Side effects can make components harder to test and reason about. They can also lead to unexpected behavior if not managed properly.
+- React encourages a declarative approach where you describe what the UI should look like, and React handles the updates efficiently. Side effects can introduce complexity into this paradigm.
+
+**How to Handle Side Effects in React:**
+
+- **Use lifecycle methods (deprecated):** In older React versions, lifecycle methods like `componentDidMount` and `componentDidUpdate` were used to handle side effects. However, these are being deprecated in favor of hooks.
+- **Use the `useEffect` Hook:** This is the recommended way to manage side effects in functional React components. It allows you to specify a function that runs after the component renders (or re-renders) and can perform necessary side effects.
+
+By understanding and managing side effects effectively, you can write cleaner, more predictable, and easier to maintain React components.
+
+
+* Hooks in React: 
+
+ **useState**
+ **useEffect**
+ **useContext**
+ **useReducer**
+ **useCallback**
+ **useMemo**
+ **useRef**
+ **useImperativeHandle**
+ **useLayoutEffect**
+ **useDebugValue**
+
+Hooks are a feature introduced in React 16.8. They allow you to use state and other React features without writing a class. They enable functional components to have access to stateful logic and lifecycle features. Which were previously only possible with classes. This has led to a more concise and readable way of writing components in React.
+
+
+*useState :
+
+useState is a Hook that lets you add state to functional components. It is used to store values that can be changed over time.
+
+*or
+
+It let's you describe the state of your app Whenever state updates. It triggers a re-render which finally results in the DOM being updated.
+
+For example in this counter:
+
+
+import {useState} from react;
+
+function App(){
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>Click me</button>
+        </div>
+    );
+}
+
+export default App;
+
+* In this example, we are using the useState Hook to add a counter to our component. We are also passing a value of 0 to the useState Hook. This value is the initial state of our counter.
+
+
+
+*useEffect :
+
+useEffect is a Hook that lets you perform side effects in function components.

@@ -1,8 +1,11 @@
 {
     "editor.acceptSuggestionOnEnter": "on",
     "cSpell.words": [
+        "asynceffects",
+        "axios",
         "Devesh",
         "devx",
+        "Signup",
         "Zerodha"
     ]
 }
