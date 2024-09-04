@@ -83,7 +83,7 @@
 
 //There are four things at high level in JS that make it asynchronous:
 // 1. Call Stack : Call stack is a data structure that records where in the program we are.(What is being called and where it is being called and what will be called next  )
-// 2. Web Apis : Web Apis are the APIs provided by the browser, like setTimeout(), fetch(), XMLHttpRequest(), etc that are used to make the JS asynchronous. For example, setTimeout() function is used to call a function after a specified time. Webapis are handled by the browser.
+// 2. Web Apis : Web Apis are the APIs provided by the browser, like setTimeout(), fetch(), XMLHttpRequest(), etc that are used to make the JS asynchronous. For example, setTimeout() function is used to call a function after a specified time. Web apis are handled by the browser.
 // 3. Callback Queue: Callback Queue is a data structure that records all the callbacks of the async functions.This a queue of all the callbacks of the async functions. Kind of a waiting queue.
 // 4. Event Loop: Event Loop is a mechanism that makes the JS asynchronous.It checks the call stack and the callback queue. If the call stack is empty, it takes the first callback from the callback queue and pushes it to the call stack. This is how the JS becomes asynchronous.
 
