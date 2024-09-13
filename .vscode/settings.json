@@ -7,5 +7,6 @@
         "devx",
         "Signup",
         "Zerodha"
-    ]
+    ],
+    "editor.fontFamily": "FiraCode Nerd Font, monospace"
 }

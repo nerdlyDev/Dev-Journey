@@ -161,7 +161,7 @@ const myFunction = function(x, y) {
 
 
 //..........................................................................................
-//interface MyInterface {
+// Conditional statements in JS
   id: number;
   name: string;
 let a = 2;
