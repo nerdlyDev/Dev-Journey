@@ -170,6 +170,3 @@ app.post("/health-checkup", function(req, res){
 app.listen(3000);
 
 // zod provides a more convenient way to coerce primitive values.
-
-
-
