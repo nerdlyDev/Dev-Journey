@@ -8,5 +8,7 @@
         "Signup",
         "Zerodha"
     ],
-    "editor.fontFamily": "FiraCode Nerd Font, monospace"
+    "editor.fontFamily": "'Cascadia Code', monospace",
+    //Cascadia Code,FiraCode Nerd Font, JetBrains Mono Nerd Font
+    "editor.fontLigatures": true,
 }
