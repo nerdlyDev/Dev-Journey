@@ -130,6 +130,7 @@ app.listen(3000);
 
    In each table, It lets you dump JSON data.
    It is schemaless*.
+   schema means structure or we can a table structure as we know in sql.
 
    It scales well and is a decent choice for most use cases .
 */
@@ -167,6 +168,8 @@ app.post("/login", function(req, res){
         });
     }
     let token = jwt.sign({username, password}, jwtPassword); // JWT'S sign function
+    what exactly this jwt.sign() function does?
+    ans: it is used to sign the token. which means it is used to encrypt the token with a secret key.
     res.json({
         token
     });
@@ -218,7 +221,7 @@ app.post("/signup", async function(req, res){
     const password = req.body.password;
     const name = req.body.name;
 
-    const existingUser = await user.findOne({email});
+    const existingUser = await user.findOne({email}); // here we are checking if the user already exists and the find one function is used to find the user by email in the database
     if(existingUser){
         return res.status(400).json({
             msg: "User already exists"

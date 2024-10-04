@@ -84,6 +84,7 @@ document.scripts
 
 NodeList:
 document.querySelectorAll() return a static NodeList
+a nodelist is a collection of nodes something like an array
  
 Changing HTML Elements:
 
@@ -116,6 +117,7 @@ removeEventListener
 
 
 Onload and Onunload functions:
+these are the functions that got called when a event happens
 
 onerror
 onblur
@@ -139,9 +141,12 @@ onunload
 Event Bubbling and Event Capturing:
 
 Two ways of event propagation in the DOM.
+event propagation in very simple words is when an event fires from one element to another.
 
-Bubbling
-Capturing
+Bubbling : 
+Event bubbling is when an event fires from one element to another. something like the inside to outside
+Capturing:
+Event capturing is when an event fires from one element to another. something like the reverse of bubbling means from outside to inside 
 */
 
 
