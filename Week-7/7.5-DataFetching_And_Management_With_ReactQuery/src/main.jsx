@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
 // QueryClient is the core class that manages query caching, retrying, and synchronization
 // It stores and updates query results and handles background updates
 const queryClient = new QueryClient(); // instance of QueryClient Class
