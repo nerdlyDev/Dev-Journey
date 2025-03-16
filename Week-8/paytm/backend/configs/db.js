@@ -6,7 +6,7 @@ const dbURL = process.env.dbURL;
 mongoose
   .connect(dbURL)
   .then(() => console.log("Successfully connected to MongoDB"))
-  .catch((e) => console.error(" DB error occures ", e));
+  .catch((e) => console.error(" DB error occurs ", e));
 
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
@@ -23,8 +23,34 @@ const UserSchema = new Schema({
     required: true,
     minLength: 6,
   },
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
+    maxLength: 50,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    trim: true,
+    maxLength: 50,
+  },
 });
 
-const User = mongoose.Model(User, UserSchema);
+const accountSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 
-module.exports = { User };
+  balance: {
+    type: Number,
+    required: true,
+  },
+});
+
+const Account = mongoose.model("Account", accountSchema);
+const User = mongoose.model("User", UserSchema);
+
+module.exports = { User, Account };
