@@ -1,4 +1,3 @@
-// backend/routes/account.js
 const express = require("express");
 const { authMiddleware } = require("../middleware/auth");
 const { Account } = require("../configs/db");
@@ -24,7 +23,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
 
   // Fetch the accounts within the transaction
   const account = await Account.findOne({ userId: req.userId }).session(
-    session,
+    session
   );
 
   if (!account || account.balance < amount) {
@@ -46,33 +45,17 @@ router.post("/transfer", authMiddleware, async (req, res) => {
   // Perform the transfer
   await Account.updateOne(
     { userId: req.userId },
-    { $inc: { balance: -amount } },
+    { $inc: { balance: -amount } }
   ).session(session);
   await Account.updateOne(
     { userId: to },
-    { $inc: { balance: amount } },
+    { $inc: { balance: amount } }
   ).session(session);
 
   // Commit the transaction
   await session.commitTransaction();
   res.json({
     message: "Transfer successful",
-  });
-
-  transfer({
-    userId: "65ac44e10ab2ec750ca666a5",
-    body: {
-      to: "65ac44e40ab2ec750ca666aa",
-      amount: 100,
-    },
-  });
-
-  transfer({
-    userId: "65ac44e10ab2ec750ca666a5",
-    body: {
-      to: "65ac44e40ab2ec750ca666aa",
-      amount: 100,
-    },
   });
 });
 

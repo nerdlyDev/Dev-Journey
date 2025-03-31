@@ -1,14 +1,13 @@
+// backend/routes/user.js
 const express = require("express");
 
 const router = express.Router();
 const zod = require("zod");
-const { User } = require("../configs/db");
+const { User, Account } = require("../configs/db");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../configs/config");
 const { authMiddleware } = require("../middleware/auth");
-const { Account } = require("../configs/db");
 
-// signup route
 const signupBody = zod.object({
   username: zod.string().email(),
   firstName: zod.string(),
@@ -42,8 +41,6 @@ router.post("/signup", async (req, res) => {
   });
   const userId = user._id;
 
-  // ------------- Create new account ---------------
-
   await Account.create({
     userId,
     balance: 1 + Math.random() * 10000,
@@ -53,7 +50,7 @@ router.post("/signup", async (req, res) => {
     {
       userId,
     },
-    JWT_SECRET,
+    JWT_SECRET
   );
 
   res.json({
@@ -67,7 +64,6 @@ const signinBody = zod.object({
   password: zod.string(),
 });
 
-// signIn route
 router.post("/signin", async (req, res) => {
   const { success } = signinBody.safeParse(req.body);
   if (!success) {
@@ -86,7 +82,7 @@ router.post("/signin", async (req, res) => {
       {
         userId: user._id,
       },
-      JWT_SECRET,
+      JWT_SECRET
     );
 
     res.json({
@@ -100,7 +96,6 @@ router.post("/signin", async (req, res) => {
   });
 });
 
-// update user route
 const updateBody = zod.object({
   password: zod.string().optional(),
   firstName: zod.string().optional(),
@@ -114,14 +109,16 @@ router.put("/", authMiddleware, async (req, res) => {
       message: "Error while updating information",
     });
   }
-  await User.updateOne({ _id: req.userId }, req.body);
+
+  await User.updateOne(req.body, {
+    id: req.userId,
+  });
 
   res.json({
     message: "Updated successfully",
   });
 });
 
-// Get api for finding users
 router.get("/bulk", async (req, res) => {
   const filter = req.query.filter || "";
 
