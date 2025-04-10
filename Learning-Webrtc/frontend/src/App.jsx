@@ -212,7 +212,8 @@ function App() {
             <Button
               variant="contained"
               color="primary"
-              startIcon={<AssignmentIcon fontSize="large" />}>
+              startIcon={<AssignmentIcon fontSize="large" />}
+            >
               Copy ID
             </Button>
           </CopyToClipboard>
@@ -232,7 +233,8 @@ function App() {
               <IconButton
                 color="primary"
                 aria-label="call"
-                onClick={() => callUser(idToCall)}>
+                onClick={() => callUser(idToCall)}
+              >
                 <PhoneIcon fontSize="large" />
               </IconButton>
             )}

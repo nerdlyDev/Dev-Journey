@@ -26,11 +26,19 @@ io.on("connection", (socket) => {
 
   // Listen for when a user joins and store their username
   socket.on("join", (username) => {
-    users[socket.id] = { username, socketId: socket.id, status: "active", timeout: null };
+    users[socket.id] = {
+      username,
+      socketId: socket.id,
+      status: "active",
+      timeout: null,
+    };
     console.log(`${username} joined the chat`);
 
     // Emit updated users list to all clients, excluding the current user
-    io.emit("update_users", Object.values(users).filter((user) => user.socketId !== socket.id));
+    io.emit(
+      "update_users",
+      Object.values(users).filter((user) => user.socketId !== socket.id),
+    );
   });
 
   // Listen for messages in the group chat
@@ -66,7 +74,10 @@ io.on("connection", (socket) => {
     if (users[socket.id]) {
       users[socket.id].status = status;
       console.log(`${username} is now ${status}`);
-      io.emit("update_users", Object.values(users).filter((user) => user.socketId !== socket.id)); // Broadcast updated user list, excluding the current user
+      io.emit(
+        "update_users",
+        Object.values(users).filter((user) => user.socketId !== socket.id),
+      ); // Broadcast updated user list, excluding the current user
     }
   });
 
@@ -75,7 +86,10 @@ io.on("connection", (socket) => {
     if (users[socket.id]) {
       users[socket.id].status = "inactive";
       console.log(`${users[socket.id].username} is now inactive`);
-      io.emit("update_users", Object.values(users).filter((user) => user.socketId !== socket.id)); // Broadcast updated user list
+      io.emit(
+        "update_users",
+        Object.values(users).filter((user) => user.socketId !== socket.id),
+      ); // Broadcast updated user list
     }
   };
 
@@ -104,7 +118,10 @@ io.on("connection", (socket) => {
     delete users[socket.id];
 
     // Emit updated users list to all clients after a disconnection
-    io.emit("update_users", Object.values(users).filter((user) => user.socketId !== socket.id));
+    io.emit(
+      "update_users",
+      Object.values(users).filter((user) => user.socketId !== socket.id),
+    );
   });
 });
 

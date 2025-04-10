@@ -1,7 +1,7 @@
-const express = require("express"); 
-const http = require("http"); 
-const { Server } = require("socket.io"); 
-const cors = require("cors"); 
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
+const cors = require("cors");
 
 // Initialize the app and server
 const app = express();
@@ -10,7 +10,7 @@ const server = http.createServer(app); // HTTP server using Express
 // Configure CORS for the Socket.IO server
 const io = new Server(server, {
   cors: {
-    origin: '*', // Allow requests from the React app
+    origin: "*", // Allow requests from the React app
     methods: ["GET", "POST"],
   },
 });

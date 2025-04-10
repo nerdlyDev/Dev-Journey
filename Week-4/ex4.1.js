@@ -1,14 +1,14 @@
-// DOM introduction: 
+// DOM introduction:
 
 // How backend and frontend communicate
 
-// Communicating to the frontend at iodex.html using fetch  
+// Communicating to the frontend at iodex.html using fetch
 // TODO >>>>>>> SUM Backend Server <<<<<<<<<<<
 
 const express = require("express");
-const cors = require('cors');  // using to give us access to all origins OF servers in browser
+const cors = require("cors"); // using to give us access to all origins OF servers in browser
 // cors is a middleware which allows us to use it in our server
-// * To encounter this : 
+// * To encounter this :
 /*The error message you're encountering indicates a CORS (Cross-Origin Resource Sharing) issue. Here's a breakdown:
 
 The Problem:
@@ -18,26 +18,25 @@ The browser is blocking this request due to CORS security restrictions. By defau
 const app = express();
 
 app.use(express.json());
-app. use(cors()); // Allows all origins of server for development 
+app.use(cors()); // Allows all origins of server for development
 
-app.get("/sum", function(req, res){
-    const a = parseInt(req.query.a);    
-    const b = parseInt(req.query.b);
-    const sum = a + b;
-    res.send("The sum is " + sum);
-} );
+app.get("/sum", function (req, res) {
+  const a = parseInt(req.query.a);
+  const b = parseInt(req.query.b);
+  const sum = a + b;
+  res.send("The sum is " + sum);
+});
 
-
-app.get("/interest", function(req, res){
-    const p = parseInt(req.query.p);
-    const r = parseInt(req.query.r);
-    const t = parseInt(req.query.t);
-    const interest = (p*r*t)/100;
-    const total = p + interest;
-    res.send({
-        total: total,
-        interest: interest
-    })
+app.get("/interest", function (req, res) {
+  const p = parseInt(req.query.p);
+  const r = parseInt(req.query.r);
+  const t = parseInt(req.query.t);
+  const interest = (p * r * t) / 100;
+  const total = p + interest;
+  res.send({
+    total: total,
+    interest: interest,
+  });
 });
 
 app.listen(3000);

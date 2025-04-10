@@ -3,6 +3,6 @@
 import { createContext } from "react";
 
 export const CountContext = createContext({
-    count: 0,
-    setCount: () => {}
+  count: 0,
+  setCount: () => {},
 }); // this is the default value or a teleporter to teleport the value to the child component.

@@ -1,4 +1,4 @@
-// Bash and terminal 
+// Bash and terminal
 
 // ternimal is but another interface to the computer
 
@@ -18,7 +18,7 @@
 
 // rm -r - remove a directory
 
-// ls - list files and 
+// ls - list files and
 
 // ls -a - list all files including hidden files
 
@@ -48,8 +48,6 @@
 
 // ls -lRS - list files in long format by file size in subdirectories
 
-
-
 // cat - concatenate and display files
 
 // cat -n - display line numbers
@@ -65,8 +63,6 @@
 // cat > - overwrite a file
 
 // cat < - read from a file
-
-
 
 // cp - copy files and directories
 
@@ -90,7 +86,7 @@
 
 // grep -h - display the matching lines without the file names
 
-// grep -i - search for a pattern in a file ignoring case   
+// grep -i - search for a pattern in a file ignoring case
 
 // grep -r - search for a pattern in a directory
 

@@ -1,10 +1,8 @@
 // Middlewares, authentication,zod and global catches
 
+// Middlewares: Middleware functions are like checkpoints that sit between the incoming request and your application's final response. They can inspect, modify, or even block requests and responses before they continue to the next stage. Common uses include authentication, logging, and data validation. Middleware makes your code more organized and flexible.
 
-// Middlewares: Middleware functions are like checkpoints that sit between the incoming request and your application's final response. They can inspect, modify, or even block requests and responses before they continue to the next stage. Common uses include authentication, logging, and data validation. Middleware makes your code more organized and flexible.  
-
-
-// Dumb way of doing Authentication check: 
+// Dumb way of doing Authentication check:
 /*
 const express = require("express");
 const app = express();
@@ -32,7 +30,7 @@ app.listen(3000);
 
 // Smart way: using middleware functions
 
-// app.use() middleware: 
+// app.use() middleware:
 /*## Simple Notes on Middlewares and `app.use`
 
 **Middlewares:**
@@ -57,8 +55,6 @@ app.listen(3000);
 
 ** We can also use middlewares as async function 
 */
-
-
 
 // const express = require('express');
 // const app = express();
@@ -98,8 +94,6 @@ app.listen(3000);
 //   console.log('Server listening on port 3000');
 // });
 
-
-
 // Input validations:
 
 /* 
@@ -127,44 +121,43 @@ app.use(function(err, req, res, next){
 app.listen(3000);
 */
 
-
 // --------- ZOD -------------
 
-// ZOD is a input validation libraries.Which provides ton of ways(functions) for validations. 
+// ZOD is a input validation libraries.Which provides ton of ways(functions) for validations.
 
 const express = require("express");
-const z = require("zod")
+const z = require("zod");
 const app = express();
 
 const schema = zod.array(zod.number());
 
 // {
 // email: string => email
-// password: atleast 8 letters 
+// password: atleast 8 letters
 // country: "IN", "US"
 // }
 
 const schema2 = z.object({
-    email:z.string(),
-    password: z.string(),
-    country: z.literal("IN").or(z.literal("US")),
-    kidneys:z.array(z.number())
-})
+  email: z.string(),
+  password: z.string(),
+  country: z.literal("IN").or(z.literal("US")),
+  kidneys: z.array(z.number()),
+});
 app.use(express.json());
 
-app.post("/health-checkup", function(req, res){
-    // kidneys = [1,2]
-    const kidneys = req.body.kidneys;
-    const response = schema.safeParse(kidneys)
-    if (!response.success){
-        res.status(411).json({
-            msg: "Input is invalid"
-        })
-    } else {
+app.post("/health-checkup", function (req, res) {
+  // kidneys = [1,2]
+  const kidneys = req.body.kidneys;
+  const response = schema.safeParse(kidneys);
+  if (!response.success) {
+    res.status(411).json({
+      msg: "Input is invalid",
+    });
+  } else {
     res.send({
-        response
-    })
-    }
+      response,
+    });
+  }
 });
 
 app.listen(3000);

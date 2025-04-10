@@ -45,10 +45,7 @@ function App() {
             className="input-field"
             placeholder="Type a message..."
           />
-          <button
-            onClick={sendMessage}
-            className="send-button"
-          >
+          <button onClick={sendMessage} className="send-button">
             Send
           </button>
         </div>

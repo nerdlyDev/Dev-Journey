@@ -1,40 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <div id = "buttonParent">
-    </div>
+  </head>
+  <body>
+    <div id="buttonParent"></div>
     <script>
-        let state = {
-            count : 0
-        }
+      let state = {
+        count: 0,
+      };
 
-        function onButtonPress(){ // This how much we have to write if we use react 
-            state.count++;
-            buttonComponentReRender();
-        }
+      function onButtonPress() {
+        // This how much we have to write if we use react
+        state.count++;
+        buttonComponentReRender();
+      }
 
-        function buttonComponentReRender(){ // This will get automatically add by react we don't need to write it 
-            document.getElementById("buttonParent").innerHTML = "";
-            const component = buttonComponent(state.count);
-            document.getElementById("buttonParent").appendChild(component);
-        }
+      function buttonComponentReRender() {
+        // This will get automatically add by react we don't need to write it
+        document.getElementById("buttonParent").innerHTML = "";
+        const component = buttonComponent(state.count);
+        document.getElementById("buttonParent").appendChild(component);
+      }
 
-        function buttonComponent(count){ // Can easily written by using react
-            const button = document.createElement("button");
-            button.innerHTML = `Counter ${count}`;
-            button.setAttribute("onclick", `onButtonPress()`);
-            return button;
-        }
+      function buttonComponent(count) {
+        // Can easily written by using react
+        const button = document.createElement("button");
+        button.innerHTML = `Counter ${count}`;
+        button.setAttribute("onclick", `onButtonPress()`);
+        return button;
+      }
 
-        buttonComponentReRender();// Don't need to manually call it if we use react and react we handle it 
-        
+      buttonComponentReRender(); // Don't need to manually call it if we use react and react we handle it
     </script>
-</body>
+  </body>
 </html>
 
 <!-- * How react: If we use react then we just need to write Global state, components and  a update state that trigger re-render -->

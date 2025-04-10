@@ -9,7 +9,7 @@ function ActiveUserList() {
       <h3>Users</h3>
       <ul>
         {users
-          .filter((user) => user.socketId !== socket.id)  // Exclude the current user
+          .filter((user) => user.socketId !== socket.id) // Exclude the current user
           .map((user) => (
             <li key={user.socketId} className="user-item">
               <span

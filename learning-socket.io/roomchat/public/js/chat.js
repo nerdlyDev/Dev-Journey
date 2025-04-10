@@ -38,8 +38,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
     return;
   }
 
-
-  console.log("Stop", messageInput.value.length)
+  console.log("Stop", messageInput.value.length);
 
   let li = document.createElement("li");
   li.textContent = messageInput.value;
@@ -61,7 +60,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
  * @param {Object} data - The data object containing the message.
  * @param {string} data.message - The content of the received message.
  */
-socket.on("received", data => {
+socket.on("received", (data) => {
   let li = document.createElement("li");
   li.textContent = data.message;
 
@@ -78,14 +77,15 @@ socket.on("received", data => {
  * @returns {Promise<void>}
  */
 fetch("/chats")
-  .then(response => response.json())
-  .then(json => {
-    json.forEach(data => {
+  .then((response) => response.json())
+  .then((json) => {
+    json.forEach((data) => {
       let li = document.createElement("li");
       li.textContent = data.message;
 
       let span = document.createElement("span");
-      span.textContent = "by " + data.sender + ": " + formatTimeAgo(data.createdAt);
+      span.textContent =
+        "by " + data.sender + ": " + formatTimeAgo(data.createdAt);
 
       messages.appendChild(li);
       messages.appendChild(span);
@@ -106,7 +106,7 @@ messageInput.addEventListener("keypress", () => {
  * @param {string} data.user - The user who is typing.
  * @param {string} data.message - The typing status message.
  */
-socket.on("notifyTyping", data => {
+socket.on("notifyTyping", (data) => {
   typing.textContent = data.user + " " + data.message;
   console.log(data.user + data.message);
 });

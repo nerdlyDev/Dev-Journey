@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- 
 <html> 
     <body>
@@ -44,22 +44,19 @@
 <!-- 
 To make a html page dynamic we use javascript or especially DOM -->
 <html>
-    <script>
-        function populateDiv(){
-           const element= document.getElementById("finalSum")
-            console.log(element)
-        }
-    </script>
-    <body>
-        <input type = "text" placeholder="First Number">
-        <br><br>
-        <input type = "text" placeholder="Second Number"> 
-        <br><br>
-        <button onclick = "populateDiv()">Calculate</button> 
-        <br><br>
-        <div id ="finalSum"></div>
-    </body>
+  <script>
+    function populateDiv() {
+      const element = document.getElementById("finalSum");
+      console.log(element);
+    }
+  </script>
+  <body>
+    <input type="text" placeholder="First Number" />
+    <br /><br />
+    <input type="text" placeholder="Second Number" />
+    <br /><br />
+    <button onclick="populateDiv()">Calculate</button>
+    <br /><br />
+    <div id="finalSum"></div>
+  </body>
 </html>
-
-
-

@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 const app = express();
 
 app.use(cors());
@@ -21,7 +21,7 @@ function generateTodo() {
   };
 }
 
-app.get('/todos', (req, res) => {
+app.get("/todos", (req, res) => {
   const todos = [];
   // Generate a configurable number of random todos (e.g., 10)
   for (let i = 0; i < 10; i++) {
@@ -31,5 +31,5 @@ app.get('/todos', (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log('Server started on port 5000');
+  console.log("Server started on port 5000");
 });

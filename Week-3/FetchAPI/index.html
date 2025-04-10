@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-/*
+      /*
         function getAnimalData(){
             const response = fetch('https://fakerapi.it/api/v1/persons')
             // console.log(response);
@@ -25,14 +25,14 @@
 
         }
 */
-            // Async Await syntax, prefer to use this only
-            // Recommended to use this way of fetching data
-            async function getAnimalData(){
-                const response = await fetch('https://fakerapi.it/api/v1/persons') // this is how we call an api using fetch and access the data from it, and How frontend and backend communicate.
-                const json = await response.json()
-                console.log(json);
-            }
+      // Async Await syntax, prefer to use this only
+      // Recommended to use this way of fetching data
+      async function getAnimalData() {
+        const response = await fetch("https://fakerapi.it/api/v1/persons"); // this is how we call an api using fetch and access the data from it, and How frontend and backend communicate.
+        const json = await response.json();
+        console.log(json);
+      }
     </script>
     <button onclick="getAnimalData()">Get Animal Data</button>
-</body>
+  </body>
 </html>

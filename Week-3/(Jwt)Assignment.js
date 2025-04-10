@@ -4,13 +4,12 @@
 
 //* Write a function that takes a jwt as input and returns true if the jwt can be verified. Return false otherwise.
 
-const jwt = require('jsonwebtoken');
-const jwtPassword = 'secret';
+const jwt = require("jsonwebtoken");
+const jwtPassword = "secret";
 const zod = require("zod");
 
 const emailSchema = zod.string().email();
 const passwordSchema = zod.string().min(6);
-
 
 /**
  * Generates a JWT for a given username and password.
@@ -24,17 +23,19 @@ const passwordSchema = zod.string().min(6);
  *                        the password does not meet the length requirement.
  */
 function signJwt(username, password) {
-     const usernameResponse = emailSchema.safeParse(username);
-     const passwordResponse = passwordSchema.safeParse(password);
-     if (!usernameResponse.success || !passwordResponse.success) {
-         return null;
-     } 
+  const usernameResponse = emailSchema.safeParse(username);
+  const passwordResponse = passwordSchema.safeParse(password);
+  if (!usernameResponse.success || !passwordResponse.success) {
+    return null;
+  }
 
-
-    const signature = jwt.sign({
-        username
-    }, jwtPassword)
-    return signature;
+  const signature = jwt.sign(
+    {
+      username,
+    },
+    jwtPassword,
+  );
+  return signature;
 }
 
 /**
@@ -46,23 +47,21 @@ function signJwt(username, password) {
  *                    using the secret key.
  */
 function verifyJwt(token) {
-    // Your code here
- /*   const verified = jwt.verify(token, jwtPassword);
+  // Your code here
+  /*   const verified = jwt.verify(token, jwtPassword);
     if (verified) {
         return true;
 } else {
     return false; // This will throw an exception if the secert key is invalid and to handle that we will use try catch 
 }*/
- let ans = true;
- try {
+  let ans = true;
+  try {
     jwt.verify(token, jwtPassword);
- } catch(e) {
+  } catch (e) {
     ans = false;
- }
- return ans; 
-
-}// Here we don't need to store verified token and do if else stuff because If this assignment we just need to verify the token and if not then return false
-
+  }
+  return ans;
+} // Here we don't need to store verified token and do if else stuff because If this assignment we just need to verify the token and if not then return false
 
 /**
  * Decodes a JWT to reveal its payload without verifying its authenticity.
@@ -72,15 +71,14 @@ function verifyJwt(token) {
  *                         Returns false if the token is not a valid JWT format.
  */
 function decodeJwt(token) {
-    // Your code here
-    const decoded = jwt.decode(token);
-    if (decoded){
-        return true;
-    } else {
-        return false;
-    }
+  // Your code here
+  const decoded = jwt.decode(token);
+  if (decoded) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
 
 module.exports = {
   signJwt,
@@ -88,5 +86,3 @@ module.exports = {
   decodeJwt,
   jwtPassword,
 };
-
-

@@ -1,33 +1,33 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import React,{Fragment} from "react"
-import { useState } from "react"
+import React, { Fragment } from "react";
+import { useState } from "react";
 
 // * The OG codebase with a lot of re-rendering
-// function App() { 
-//   const [title, setTitle] = useState("DevX"); // A state variable to store data 
-  
+// function App() {
+//   const [title, setTitle] = useState("DevX"); // A state variable to store data
+
 //   function updateTitle(){ // A function to update the state variable also known as Event Handler
 //     setTitle("DevX " + Math.random());
 //   }
 //   return (
 //     <div>
 //       {/* It's xml not html but eventually will be converted to html */}
-//       <button onClick = {updateTitle}>Click Me</button>  
-//       <Header title={title}/> 
+//       <button onClick = {updateTitle}>Click Me</button>
+//       <Header title={title}/>
 //       <Header title="Hello React"/>
 //       <Header title="Hello React"/>
 //       <Header title="Hello React"/>
 //       <Header title="Hello React"/>
 //       <Header title="Hello React"/>
-//     </div> // You can't return multiple sibling components in react without a top level component / parent <div></div> 
-    // This is because react is a component based framework and not a template based framework
-    // But we can get rid of this extra div(which is extra dom element) by using empty tags like <></> or <React.Fragment></React.Fragment> or <Fragment></Fragment>
+//     </div> // You can't return multiple sibling components in react without a top level component / parent <div></div>
+// This is because react is a component based framework and not a template based framework
+// But we can get rid of this extra div(which is extra dom element) by using empty tags like <></> or <React.Fragment></React.Fragment> or <Fragment></Fragment>
 
 //   )
 // }
- 
+
 // function Header({title}){ //Here we are using Object destructuring syntax but can also use prop based syntax
 //   return <div>
 //     {title}
@@ -36,14 +36,12 @@ import { useState } from "react"
 
 // export default App
 
-
-
 // * The CodeBase1 using functional component
 // function App() {
-  
+
 //   return (
 //     <div>
-//       <HeaderWithButton/> {/*using this component to access state variables and avoid unwanted re-rendering */} 
+//       <HeaderWithButton/> {/*using this component to access state variables and avoid unwanted re-rendering */}
 //       <Header title="Hello React"/>
 //       <Header title="Hello React"/>
 //       <Header title="Hello React"/>
@@ -52,11 +50,11 @@ import { useState } from "react"
 //     </div>
 //   )
 
-//   function HeaderWithButton(){ 
+//   function HeaderWithButton(){
 //     // Moved the state variable to a separate component to avoid re-rendering the whole app
 //     const [title, setTitle] = useState("DevX");
-  
-//   function updateTitle(){ 
+
+//   function updateTitle(){
 //     setTitle("DevX " + Math.random());
 //   }
 
@@ -66,7 +64,7 @@ import { useState } from "react"
 //   </div>
 //   }
 // }
- 
+
 // function Header({title}){
 //   return <div>
 //     {title}
@@ -75,15 +73,12 @@ import { useState } from "react"
 
 // export default App
 
-
-
-
 // The CodeBase3
 
 // function App() {
 //   const [title, setTitle] = useState("DevX");
 
-//   function updateTitle(){ 
+//   function updateTitle(){
 //     setTitle("DevX " + Math.random());
 //   }
 
@@ -100,7 +95,6 @@ import { useState } from "react"
 //   )
 //   }
 
-
 // const Header = React.memo(function Header({title}){
 //   return <div>
 //     {title}
@@ -109,16 +103,13 @@ import { useState } from "react"
 
 // export default App
 
-
-
-
 // ** The re-render process: use react dev tools to better understanding.
 
 // ? It happens when
 // * A state variable that is being used inside a component changes.
 // * A parent component re-render triggers all children re-rendering. Meaning in above code when we click on the button, all the children components will re-render.
 
-// ? What we need to: 
+// ? What we need to:
 // * Need to avoid unnecessary re-renders, to improve performance.
 
 // ? How we can do that:
@@ -127,17 +118,12 @@ import { useState } from "react"
 // * By using this approach only the component with button and header( with the changing value) and the parent component will re-render.
 // There are multiple ways to do memoization.
 
-
 // * Another way is by using PureComponent but its not recommended.
-
 
 // * A common way is by moving the state variable outside the component as shown above in codebase1.In this way only the component with button and header( with the changing value) component will re-render.
 // In above code, only the button and the header(with changing values ) component will re-render by using this approach.
 
 // ** If there is a state variable which will be use globally or by lowest level child component, then we can move it outside(the idea is to keep it to the lowest common child ancestor ) the component as shown above in codebase1. Push down the state as much as possible.
-
-
-
 
 // * When a component's state changes (e.g., by clicking a button) or when it receives new props, React schedules a re-render for that component.
 
@@ -152,15 +138,7 @@ import { useState } from "react"
 
 // * Based on the reconciliation results, React only updates the parts of the real DOM that have actually changed. This minimizes unnecessary DOM manipulations and improves performance.
 
-
-
-
-
-
-
-// * Keys in react: 
-
-
+// * Keys in react:
 
 // Understanding keys in react by creating a simple todo app.
 // let counter = 4;
@@ -196,7 +174,7 @@ import { useState } from "react"
 //   //   for( let i = 0; i < todos.length; i++){
 //   //     newTodos.push(todos[i]);
 //   // }
-//   // // newTodos == todos 
+//   // // newTodos == todos
 //   // newTodos.push({
 //   //   id: 4,
 //   //   title: Math.random(),
@@ -229,7 +207,6 @@ import { useState } from "react"
 //    - `<Todo ... />`: This likely refers to a separate React component named `Todo`. It's responsible for rendering the visual representation of a todo item, potentially displaying the `title` and `description` properties passed as props.
 //    - `title={todo.title}` and `description={todo.description}`: These are attributes (or props) passed to the `Todo` component. They provide the specific `title` and `description` values from the current `todo` object being processed. These values will be used by the `Todo` component to render the content.
 
-
 //    In React, keys are unique identifiers assigned to elements within lists to help React efficiently optimize the rendering process. Here's why they're important:
 
 // Identifying Changes:
@@ -252,10 +229,6 @@ import { useState } from "react"
 // }
 
 // export default App;
-
-
-
-
 
 //* What is wrapper component and its purpose?
 
@@ -295,62 +268,46 @@ import { useState } from "react"
 
 // export default App;
 
-
-
 //* The real right way of using wrapper component for multiple components(e.g. multiple cards, Signup form, etc.)
 
 // When ever you want to use the same component multiple times, you can use wrapper component.
-function App(){
-  return(
+function App() {
+  return (
     <div>
+      <CardWrapper>Hey There !</CardWrapper>
+      <br></br>
+
+      <CardWrapper>Hello there !</CardWrapper>
+      <br></br>
+
       <CardWrapper>
-        Hey There !
+        <CardWrapper>The magic</CardWrapper>
       </CardWrapper>
       <br></br>
 
       <CardWrapper>
-        Hello there ! 
-      </CardWrapper>
-      <br></br>
-
-      <CardWrapper>
-        <CardWrapper>
-          The magic 
-        </CardWrapper>
-      </CardWrapper>
-      <br></br>
-
-      <CardWrapper>
-        <TextComponent/>
+        <TextComponent />
       </CardWrapper>
       <br></br>
 
       <CardWrapper>
         <button>Click Me</button>
       </CardWrapper>
-
-
     </div>
-    
-  )
-} 
-
-function CardWrapper({children}){ // This is a wrapper component. which takes children as props.
-  return(
-    <div style = {{border: "2px solid black", padding: 20 }}> {children}
-    </div>
-  )
+  );
 }
 
-function TextComponent(){
-  return(
-    <div>
-      Hi from text component !!
-    </div>
-  )
+function CardWrapper({ children }) {
+  // This is a wrapper component. which takes children as props.
+  return (
+    <div style={{ border: "2px solid black", padding: 20 }}> {children}</div>
+  );
+}
+
+function TextComponent() {
+  return <div>Hi from text component !!</div>;
 }
 export default App;
-
 
 //* Hooks : useEffect, useCallback, useMemo, useRef, useReducer, useContext, useImperativeHandle, useLayoutEffect, useDebugValue
 
