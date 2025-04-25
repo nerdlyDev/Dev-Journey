@@ -1,35 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<script>
+  </head>
+  <script>
     function IntrstDiv() {
-  let p = document.getElementById("principal").value;
-  let r = document.getElementById("rate").value;
-  let t = document.getElementById("time").value;
+      let p = document.getElementById("principal").value;
+      let r = document.getElementById("rate").value;
+      let t = document.getElementById("time").value;
 
-  fetch("http://localhost:3000/interest?p=" + p + "&r=" + r + "&t=" + t)
-    .then(response => response.json()) // Parse the JSON response
-    .then(data => {
-      document.getElementById("finalSum").innerHTML = data.total; // Access the total property from the data object
-    })
-    .catch(error => console.error(error)); // Handle any errors during the fetch
-}
-
-</script>
-<body>
-    <input id="principal" type = "text" placeholder="Principal amount">
-    <br><br>
-    <input id="rate" type = "text" placeholder="Rate">
-    <br><br>
-    <input id="time" type = "text" placeholder="Time">
-    <br><br>
+      fetch("http://localhost:3000/interest?p=" + p + "&r=" + r + "&t=" + t)
+        .then((response) => response.json()) // Parse the JSON response
+        .then((data) => {
+          document.getElementById("finalSum").innerHTML = data.total; // Access the total property from the data object
+        })
+        .catch((error) => console.error(error)); // Handle any errors during the fetch
+    }
+  </script>
+  <body>
+    <input id="principal" type="text" placeholder="Principal amount" />
+    <br /><br />
+    <input id="rate" type="text" placeholder="Rate" />
+    <br /><br />
+    <input id="time" type="text" placeholder="Time" />
+    <br /><br />
     <button onclick="IntrstDiv()">Calculate</button>
-    <br><br>
-    <div id ="finalSum"></div>
-
-</body>
-</html> 
+    <br /><br />
+    <div id="finalSum"></div>
+  </body>
+</html>

@@ -1,8 +1,7 @@
-import { useEffect, useState,useMemo, useCallback } from 'react'
-import './App.css'
-import axios from 'axios';
-import { set } from 'mongoose';
-
+import { useEffect, useState, useMemo, useCallback } from "react";
+import "./App.css";
+import axios from "axios";
+import { set } from "mongoose";
 
 //* useState, useEffect hooks
 
@@ -33,11 +32,6 @@ import { set } from 'mongoose';
 //   )
 // }
 // export default App
-
-
-
-
-
 
 // function App(){
 //   const [selectedId, setSelectedId] = useState(1);
@@ -80,10 +74,7 @@ import { set } from 'mongoose';
 //   )
 // }
 
-
 // export default App;
-
-
 
 // * useMemo hook: It is used to memoize the value of a function.
 
@@ -91,7 +82,7 @@ import { set } from 'mongoose';
 //   const [counter, setCounter] = useState(0);
 //   const [inputValue, setInputValue] = useState(1);
 //   //const [count,setCount] = useState(0);
-  
+
 //   // Here by using useMemo hook we are telling the react to only re-run the function when the inputValue changes.
 //   // Here we are using the dependency array to tell the react that whenever the inputValue changes, the count should be re-run.
 //   // So whenever the inputValue changes, the count should be re-run.
@@ -103,7 +94,7 @@ import { set } from 'mongoose';
 // }
 // return count;
 //   },[inputValue]);
-  
+
 //   // useEffect(()=>{
 //   //   let finalCount = 0;
 //   //   for(let i = 1; i <= inputValue; i++){
@@ -131,10 +122,7 @@ import { set } from 'mongoose';
 
 // export default App;
 
-
-
 // * useCallback hook: It is a hook in React, It is used to memoize the callback functions. which can help in optimizing the performance of the application.Especially in cases involving child components that rely on reference equality to prevent unnecessary renders.
-
 
 // **What is `useCallback`?**
 
@@ -156,12 +144,11 @@ import { set } from 'mongoose';
 
 // **Simple Code Example:**
 
-
 function ParentComponent() {
   const [count, setCount] = useState(0);
 
   const handleClick = useCallback(() => {
-    console.log('Button clicked!', count);
+    console.log("Button clicked!", count);
   }, [count]); // Dependency: count
 
   return (
@@ -198,6 +185,3 @@ export default ParentComponent;
 
 // - `useCallback` should be used judiciously. Overusing it can add overhead.
 // - It's generally recommended to only use `useCallback` when necessary to optimize performance for child components that rely on reference equality.
-
-
-

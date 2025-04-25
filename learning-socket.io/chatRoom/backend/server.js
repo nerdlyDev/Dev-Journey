@@ -1,16 +1,16 @@
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const cors = require('cors');
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
+const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
-    cors: {
-        origin: '*', // Allow all origins
-        methods: ['GET', 'POST'],
-    },
+  cors: {
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST"],
+  },
 });
 
 // Middleware
@@ -26,28 +26,27 @@ let messages = [];
 // });
 
 // WebSocket Connection
-io.on('connection', (socket) => {
-    console.log(`User connected: ${socket.id}`);
+io.on("connection", (socket) => {
+  console.log(`User connected: ${socket.id}`);
 
-    // Send existing messages to the new user
-    socket.emit('init', messages);
+  // Send existing messages to the new user
+  socket.emit("init", messages);
 
-    // Listen for new messages
-    socket.on('chat message', (msg) => {
-        messages.push(msg); // Save the message in memory
-        io.emit('chat message', msg); // Broadcast the message to all clients
-    });
+  // Listen for new messages
+  socket.on("chat message", (msg) => {
+    messages.push(msg); // Save the message in memory
+    io.emit("chat message", msg); // Broadcast the message to all clients
+  });
 
-    // Handle user disconnect
-    socket.on('disconnect-user', (username) => {
-      
-        console.log(`User ${username || 'unknown'} disconnected: ${socket.id}`);
-        socket.emit('disconnect-confirmation', `Goodbye, ${username || 'user'}!`);
-    });
+  // Handle user disconnect
+  socket.on("disconnect-user", (username) => {
+    console.log(`User ${username || "unknown"} disconnected: ${socket.id}`);
+    socket.emit("disconnect-confirmation", `Goodbye, ${username || "user"}!`);
+  });
 
-    // socket.on('disconnect', () => {
-    //     console.log(`Socket disconnected: ${socket.id}`);
-    // });
+  // socket.on('disconnect', () => {
+  //     console.log(`Socket disconnected: ${socket.id}`);
+  // });
 });
 
 // io.on('disconnect', () => {
@@ -56,4 +55,6 @@ io.on('connection', (socket) => {
 
 // Start the server
 const PORT = 5000;
-server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+server.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`),
+);

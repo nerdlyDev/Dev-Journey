@@ -1,4 +1,4 @@
-// // JWT and Auth Recap and Assignment 
+// // JWT and Auth Recap and Assignment
 
 // const jwt = require("jsonwebtoken");
 
@@ -24,9 +24,6 @@
 // // Only the server sign the  token can verify it with this key.
 // const verifiedValue = jwt.verify(token, "secretKey");
 // console.log(verifiedValue);
-
-
-
 
 // ----------  DOM --------------
 
@@ -149,8 +146,6 @@ Capturing:
 Event capturing is when an event fires from one element to another. something like the reverse of bubbling means from outside to inside 
 */
 
-
-
 // 1.Generating(sign) JWT
 // 2.Decoding JWT
 // 3.Verifying JWT
@@ -175,22 +170,17 @@ console.log(varifiedToken);
 // While the secretkey is the same, the token can be verified using the same secretkey
 */
 
-
 //------------ Try catch in JS ---------------
 
 // The try block lets you define a block of code to be tested for errors.
 // The catch block lets you handle the error.
 // The finally block lets you execute code, after try and catch, regardless of the result.
 
-
 try {
-     let a;
-     console.log(a.length);
-     console.log("I am inside try block");
-} catch(e){
-    console.log("I am inside catch block");
+  let a;
+  console.log(a.length);
+  console.log("I am inside try block");
+} catch (e) {
+  console.log("I am inside catch block");
 }
 console.log("I am outside try and catch block");
-
-
-

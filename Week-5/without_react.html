@@ -1,22 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<script>
-    function onButtonPress(){//In old way: We have to write these kind of code when we want to make our page's content dynamic as we want.
-        const currentValue = document.getElementById("btn").innerHTML;
-        console.log(currentValue.split(" ")[1]);
-        const currentCounter = currentValue.split(" ")[1];
-        const newCounterValue = parseInt(currentCounter) + 1;
-        document.getElementById("btn").innerHTML = "Counter " + newCounterValue;
+  </head>
+  <script>
+    function onButtonPress() {
+      //In old way: We have to write these kind of code when we want to make our page's content dynamic as we want.
+      const currentValue = document.getElementById("btn").innerHTML;
+      console.log(currentValue.split(" ")[1]);
+      const currentCounter = currentValue.split(" ")[1];
+      const newCounterValue = parseInt(currentCounter) + 1;
+      document.getElementById("btn").innerHTML = "Counter " + newCounterValue;
     }
-</script>
-<body>
- <button onclick="onButtonPress()" id = "btn">Counter 0</button>   
-</body>
+  </script>
+  <body>
+    <button onclick="onButtonPress()" id="btn">Counter 0</button>
+  </body>
 </html>
 
 <!-- * To understand the react we need to understand what is DOM and it requires three most important things in react which are States, components and Re-rendering  -->

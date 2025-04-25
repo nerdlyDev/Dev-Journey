@@ -194,7 +194,9 @@ body {
   border: 2px solid #a3d063;
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s linear, color 0.3s linear;
+  transition:
+    background-color 0.3s linear,
+    color 0.3s linear;
   text-align: center;
   line-height: 50px;
   font-size: 18px;
@@ -212,7 +214,7 @@ body {
 }
 
 /* Styles for list items and spans in messages */
-.messages>li {
+.messages > li {
   font-size: 14px;
   color: #fff;
   background: #f7a306;
@@ -222,7 +224,7 @@ body {
   width: fit-content;
 }
 
-.messages>span {
+.messages > span {
   font-size: 12px;
   font-style: italic;
   color: #888;

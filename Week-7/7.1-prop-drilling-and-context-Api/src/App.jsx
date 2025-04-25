@@ -17,11 +17,7 @@ function App() {
 function Count() {
   const { count } = useContext(CountContext);
 
-  return (
-    <div>
-      {count}
-    </div>
-  );
+  return <div>{count}</div>;
 }
 
 function Buttons() {
@@ -36,4 +32,3 @@ function Buttons() {
 }
 
 export default App;
-

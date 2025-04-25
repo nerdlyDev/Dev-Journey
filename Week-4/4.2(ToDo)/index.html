@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- * The dirty way 
 
     * Why react was introduces,
@@ -10,28 +10,27 @@ React makes DOM manipulation easy.
 * This how things were done before React.
 -->
 
-
 <html>
-<body>
+  <body>
     <div>
-        <input type = "text" id = "title" placeholder="title">
-        <br><br>
-        <input type = "text" id = "description" placeholder="description" >
-        <br><br>
-        <!-- <button onclick="addTodo()">Add Todo</button> -->
-        <br><br>
-        
-        <div id = "container"></div>    
+      <input type="text" id="title" placeholder="title" />
+      <br /><br />
+      <input type="text" id="description" placeholder="description" />
+      <br /><br />
+      <!-- <button onclick="addTodo()">Add Todo</button> -->
+      <br /><br />
+
+      <div id="container"></div>
     </div>
-<!-- * Why we put javascript here because first we need that div which we need to update and after then we can perform some operations -->
+    <!-- * Why we put javascript here because first we need that div which we need to update and after then we can perform some operations -->
     <script>
-        // let globalId = 1;
-        // function markAsDone (todoId) {
-        //     const parent = document.getElementById(todoId);
-        //     parent.children[2].innerHTML = "Done!"
-        // }
-    
-    /* Problem with this approach is that it is very hard to add and remove elements.
+      // let globalId = 1;
+      // function markAsDone (todoId) {
+      //     const parent = document.getElementById(todoId);
+      //     parent.children[2].innerHTML = "Done!"
+      // }
+
+      /* Problem with this approach is that it is very hard to add and remove elements.
     And their is no central state.
     
     What if there is a Server where these todOS are put
@@ -41,52 +40,55 @@ React makes DOM manipulation easy.
     You only have a addTOdO function
     You don't have an updateTodo or remove Todo function yet
     */
-        function createChild(title, description, id) {
-            const child = document.createElement("div");
-            const firstGrandParent = document.createElement("div");
-            firstGrandParent.innerHTML = title;
-            const secondGrandParent = document.createElement("div");
-            secondGrandParent.innerHTML = description;
-            const thirdGrandParent = document.createElement("button");
-            thirdGrandParent.innerHTML = "Mark as done";
-            thirdGrandParent.setAttribute("onclick", `markAsDone(${id})`);
-            child.appendChild(firstGrandParent);
-            child.appendChild(secondGrandParent);
-            child.appendChild(thirdGrandParent);
-            child.setAttribute("id", id);
-            return child;
-        }
-    
-        
-        // function addTodo() {
-        //     const title = document.getElementById("title").value;
-        //     const description = document.getElementById("description").value;
-        //     const parent = document.getElementById("todos");
-        //     parent.appendChild(createChild(title, description, globalId++));
-        // }
-    
-        // TODO: If you can write a function, that takes this state as an input and create the output an the right, that is much more powerful that our original approach.
-    
-        // State will always be an array
-        // Every element of state would have title, description and id
+      function createChild(title, description, id) {
+        const child = document.createElement("div");
+        const firstGrandParent = document.createElement("div");
+        firstGrandParent.innerHTML = title;
+        const secondGrandParent = document.createElement("div");
+        secondGrandParent.innerHTML = description;
+        const thirdGrandParent = document.createElement("button");
+        thirdGrandParent.innerHTML = "Mark as done";
+        thirdGrandParent.setAttribute("onclick", `markAsDone(${id})`);
+        child.appendChild(firstGrandParent);
+        child.appendChild(secondGrandParent);
+        child.appendChild(thirdGrandParent);
+        child.setAttribute("id", id);
+        return child;
+      }
 
-        function updateDomAccToState(state){
-            const parent = document.getElementById("container");
-            parent.innerHTML = "";
-            for( let i = 0; i <state.length; i++){
-                const child = createChild(state[i].title, state[i].description, state[i].id);
-                parent.appendChild(child);
-            }
-        }
-        // following randomTodo backend server
+      // function addTodo() {
+      //     const title = document.getElementById("title").value;
+      //     const description = document.getElementById("description").value;
+      //     const parent = document.getElementById("todos");
+      //     parent.appendChild(createChild(title, description, globalId++));
+      // }
 
-            windows.setInterval(async function(){
-                console.log("getting data");
-                const res = await fetch("http://localhost:5000/todos")
-                console.log("Data received");
-                const json = await res.json();
-                updateDomAccToState(json.todos)
-            },5000)   
+      // TODO: If you can write a function, that takes this state as an input and create the output an the right, that is much more powerful that our original approach.
+
+      // State will always be an array
+      // Every element of state would have title, description and id
+
+      function updateDomAccToState(state) {
+        const parent = document.getElementById("container");
+        parent.innerHTML = "";
+        for (let i = 0; i < state.length; i++) {
+          const child = createChild(
+            state[i].title,
+            state[i].description,
+            state[i].id,
+          );
+          parent.appendChild(child);
+        }
+      }
+      // following randomTodo backend server
+
+      windows.setInterval(async function () {
+        console.log("getting data");
+        const res = await fetch("http://localhost:5000/todos");
+        console.log("Data received");
+        const json = await res.json();
+        updateDomAccToState(json.todos);
+      }, 5000);
     </script>
     <!-- * The Better Approach
 
@@ -108,5 +110,5 @@ React makes DOM manipulation easy.
 
     * All this usually do by React JS
     -->
-</body>
+  </body>
 </html>

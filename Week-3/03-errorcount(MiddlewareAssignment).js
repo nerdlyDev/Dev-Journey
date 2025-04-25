@@ -1,21 +1,20 @@
-const request = require('supertest');
-const assert = require('assert');
-const express = require('express');
+const request = require("supertest");
+const assert = require("assert");
+const express = require("express");
 
 const app = express();
 let errorCount = 0;
 
-
-app.get('/user', function(req, res) {
+app.get("/user", function (req, res) {
   throw new Error("User not found");
-  res.status(200).json({ name: 'john' });
+  res.status(200).json({ name: "john" });
 });
 
-app.post('/user', function(req, res) {
-  res.status(200).json({ msg: 'created dummy user' });
+app.post("/user", function (req, res) {
+  res.status(200).json({ msg: "created dummy user" });
 });
 
-app.get('/errorCount', function(req, res) {
+app.get("/errorCount", function (req, res) {
   res.status(200).json({ errorCount });
 });
 
@@ -28,8 +27,8 @@ app.get('/errorCount', function(req, res) {
 
 // The error handling middleware is added here at the end of the stack
 
-app.use(function(err, req, res, next) {
-  res.status(404).send({})
+app.use(function (err, req, res, next) {
+  res.status(404).send({});
   errorCount = errorCount + 1;
-})
+});
 module.exports = app;

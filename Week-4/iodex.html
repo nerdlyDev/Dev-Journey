@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
-</head>
-<script>
-// Debouncing and Throttling: 
-let timeout;
-function debouncePopulateDiv(){
-    // Delay the call to populateDiv until the user stops typing means wait for 100ms before another call 
-    // And called atleast once
-    // To achieve the debouncing we need to reset the timer 
-    // To do this we have a function called clearTimeout
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    // Debouncing and Throttling:
+    let timeout;
+    function debouncePopulateDiv() {
+      // Delay the call to populateDiv until the user stops typing means wait for 100ms before another call
+      // And called atleast once
+      // To achieve the debouncing we need to reset the timer
+      // To do this we have a function called clearTimeout
 
-    // If you create a clock and then call clearTimeout() it will reset the timer and no request calls goes out at that time
-    clearTimeout(timeout);
-    timeout = setTimeout(function(){
-       // clearTimeout(timeout); // must be in the callback function
+      // If you create a clock and then call clearTimeout() it will reset the timer and no request calls goes out at that time
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        // clearTimeout(timeout); // must be in the callback function
         populateDiv();
-    }, 1000);
-}
-/*
+      }, 1000);
+    }
+    /*
 Debouncing:
 
 Scenario: You're typing in a search bar. With debouncing, the search results update only after you've stopped typing for a certain amount of time (e.g., 0.5 seconds).
@@ -39,30 +39,29 @@ Here's a table summarizing the key differences:
 
 */
 
+    function populateDiv() {
+      const element = document.getElementById("finalSum");
+      // Here the element is DOM object which is referencing to the finalSum
+      // element.innerHTML = "Hello" // This how DOM lets us manipulate HTML page using JS
+      const a = document.getElementById("firstNumber").value; // This is how we can get value from HTML input box
+      const b = document.getElementById("secondNumber").value;
+      //    const sum = parseInt(a) + parseInt(b);
+      //    element.innerHTML = sum
+      // Instead of doing this we are going to hit the backend server which will send the sum and display it on the frontend
+      // The server code is in ex4.1.js file in Week-4 folder
 
-    function populateDiv(){
-        const element= document.getElementById("finalSum") 
-        // Here the element is DOM object which is referencing to the finalSum
-       // element.innerHTML = "Hello" // This how DOM lets us manipulate HTML page using JS
-       const a = document.getElementById("firstNumber").value; // This is how we can get value from HTML input box
-       const b = document.getElementById("secondNumber").value;
-    //    const sum = parseInt(a) + parseInt(b);
-    //    element.innerHTML = sum
-    // Instead of doing this we are going to hit the backend server which will send the sum and display it on the frontend
-    // The server code is in ex4.1.js file in Week-4 folder
+      // using fetch we will be doing the request to the backend server silently which means we did not need to refresh the page
 
-    // using fetch we will be doing the request to the backend server silently which means we did not need to refresh the page
-
-    fetch("http://localhost:3000/sum?a=" + a +"&b=" + b) // a ugly way of doing it
-        .then(function(response){ // It return a promise
-            response.text() // It returns a promise
-            .then(function(ans){
-                document.getElementById("finalSum").innerHTML = ans;
-        })
-    });
-
+      fetch("http://localhost:3000/sum?a=" + a + "&b=" + b) // a ugly way of doing it
+        .then(function (response) {
+          // It return a promise
+          response
+            .text() // It returns a promise
+            .then(function (ans) {
+              document.getElementById("finalSum").innerHTML = ans;
+            });
+        });
     }
-
 
     // * A better way of doing it using async and await
     // async function populateDiv(){
@@ -78,12 +77,10 @@ Here's a table summarizing the key differences:
     // }
 
     // There is another modern way of doing it by using axios library instead of Fetch API
-    
+
     // TODO: Make the frontend for calculate interest and display it on the frontend and hit the backend for the calculation and display it on the frontend
-
-
-</script>
-<body>
+  </script>
+  <body>
     <!-- <input id="firstNumber" type = "text" placeholder="First Number">
     <br><br>
     <input id="secondNumber" type = "text" placeholder="Second Number"> 
@@ -92,14 +89,24 @@ Here's a table summarizing the key differences:
     <br><br>
     <div id ="finalSum"></div> -->
 
-<!-- For Debouncing -->
-<!--0 oninput will call the function whenever the user types -->
-    <input oninput ="debouncePopulateDiv()" id="firstNumber" type = "text" placeholder="First Number">
-    <br><br>
-    <input oninput ="debouncePopulateDiv()" id="secondNumber" type = "text" placeholder="Second Number"> 
-    <br><br>
+    <!-- For Debouncing -->
+    <!--0 oninput will call the function whenever the user types -->
+    <input
+      oninput="debouncePopulateDiv()"
+      id="firstNumber"
+      type="text"
+      placeholder="First Number"
+    />
+    <br /><br />
+    <input
+      oninput="debouncePopulateDiv()"
+      id="secondNumber"
+      type="text"
+      placeholder="Second Number"
+    />
+    <br /><br />
 
-    <br><br>
-    <div id ="finalSum"></div>
-</body>
+    <br /><br />
+    <div id="finalSum"></div>
+  </body>
 </html>

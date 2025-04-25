@@ -1,7 +1,6 @@
 // import { useState,useEffect, useMemo, useCallback,memo } from 'react'
 // import './App.css'
 
-
 // function App() {
 //   const [exchangeData, setExchangeData] = useState({});
 //   const [exchangeData2, setExchangeData2] = useState({});
@@ -33,10 +32,9 @@
 //     }, 5000);
 //   },[]);
 
-
 //   //* useCallback is not about minimizing the number of renders.
 //   //* useCallback is about not rendering a child component if the function hasn't/doesn't need to change across renders.
-  
+
 //   // const cryptoReturns = useMemo(() => {// *Here useMemo lets you to create a value that is only calculated once and then re-used until the dependencies change.
 //   //   // *UseMemo let you skip unwanted re-renders
 
@@ -74,24 +72,23 @@
 // }
 // export default App
 
-
-
-
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 function App() {
- const [incomeTax, setIncomeTax] = useState(2000); 
- const divRef = useRef(); // useRef hook is used to get access to the DOM element, In a better way than using the DOM directly.
+  const [incomeTax, setIncomeTax] = useState(2000);
+  const divRef = useRef(); // useRef hook is used to get access to the DOM element, In a better way than using the DOM directly.
 
- useEffect(() => { setTimeout(() => {
-   console. log(divRef.current); 
-   divRef.current.innerHTML = 10 
-  }, 5000);// divRef.current points to current DOM element. 
-},[])
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(divRef.current);
+      divRef.current.innerHTML = 10;
+    }, 5000); // divRef.current points to current DOM element.
+  }, []);
 
-return ( 
-<div> 
-  hi there, your income tax returns are <div ref={divRef}>{incomeTax}</div>
-   </div> )
+  return (
+    <div>
+      hi there, your income tax returns are <div ref={divRef}>{incomeTax}</div>
+    </div>
+  );
 }
-export default App
+export default App;

@@ -45,8 +45,8 @@ socket.on("connection", socket => {
 > Frontend
 
 ```javascript
-(function() {
-  $("form").submit(function(e) {
+(function () {
+  $("form").submit(function (e) {
     let li = document.createElement("li");
     e.preventDefault(); // prevents page reloading
     socket.emit("chat message", $("#message").val());
@@ -60,7 +60,7 @@ socket.on("connection", socket => {
     return false;
   });
 
-  socket.on("received", data => {
+  socket.on("received", (data) => {
     let li = document.createElement("li");
     let span = document.createElement("span");
     var messages = document.getElementById("messages");

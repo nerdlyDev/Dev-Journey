@@ -25,20 +25,17 @@ app.use(express.static(__dirname + "/public"));
 //integrating socketio
 socket = io(http);
 
-
-
 //setup event listener
-socket.on("connection", socket => {
-
+socket.on("connection", (socket) => {
   socket.on("disconnect", function () {
     console.log("user disconnected");
   });
 
   //Someone is typing
-  socket.on("typing", data => {
+  socket.on("typing", (data) => {
     socket.broadcast.emit("notifyTyping", {
       user: data.user,
-      message: data.message
+      message: data.message,
     });
   });
 
@@ -54,7 +51,6 @@ socket.on("connection", socket => {
 
     //broadcast message to everyone in port:5000 except yourself.
     socket.broadcast.emit("received", { message: msg });
-
   });
 });
 
@@ -63,7 +59,7 @@ http.listen(port, async () => {
     .then(() => {
       console.log("Successfully connected to MongoDB");
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Error connecting to MongoDB", err);
     });
 

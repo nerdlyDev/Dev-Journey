@@ -53,7 +53,7 @@ function MyComponentLifeCycle() {
 
     return () => {
       //* this function runs for cleanup meaning when it runs to cleanup previous effects
-      //* at -1:58:13 in 9.1
+
       console.log("MyComponent lifeCycle unmounted !!");
     };
   }, []);

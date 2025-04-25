@@ -8,7 +8,7 @@ router.route("/").get(async (req, res, next) => {
   res.statusCode = 200;
 
   let data = await Chats.find({ sender: "Anonymous" });
-  res.json(data)
+  res.json(data);
 });
 
 module.exports = router;

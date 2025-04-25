@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Signup } from "./pages/Signup";
 import { Signin } from "./pages/Signin";
@@ -17,6 +18,10 @@ function App() {
       </BrowserRouter>
     </>
   );
+=======
+function App() {
+  return <div>Hello world</div>;
+>>>>>>> 31367267da2edb806dc7d9f9f8172c49d59e8d78
 }
 
 export default App;

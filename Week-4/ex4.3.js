@@ -1,7 +1,7 @@
 // Browser ---> Express(Cluster of servers) --->  Database
 // Good question to have at this point
 // What extra does the http server provide exactly ?
-// What extra http server provide exactly? 
+// What extra http server provide exactly?
 
 // *Databases were are created using protocols that browsers don't understand
 
@@ -21,8 +21,6 @@
 // Update Data
 // Delete Data
 // * Popularly known as CRUD
-
-
 
 /* 
 * Let's see the API for the mongoose library
@@ -71,7 +69,6 @@ Conclusion:
 Mongoose provides a structured approach to working with MongoDB, even though it's a schemaless database. Schemas bring advantages like data consistency, type safety, and improved developer experience. While Mongoose is a solid choice, Prisma offers a more modern approach with type safety and code generation. Eventually, using Prisma might be a better fit for your project.
 */
 
-
 // 3 Jargons to know about Mongoose
 
 // Clusters: Mongoose provides a way to connect to multiple MongoDB servers in a cluster. This can be useful for scaling applications. A cluster can have multiple servers and each server can have multiple databases.
@@ -81,4 +78,3 @@ Mongoose provides a structured approach to working with MongoDB, even though it'
 // Schema: Mongoose provides a way to define the structure of your data. This can be useful for data consistency and type safety.
 
 // Tables: Mongoose provides a way to define the structure of your data in a table-like format. This can be useful for data consistency and type safety.
-

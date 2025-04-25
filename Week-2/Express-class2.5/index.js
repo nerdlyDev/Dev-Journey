@@ -7,7 +7,6 @@
 //});
 //app.listen(3000);
 
-
 //----------------------------------------------
 
 /* TODO:
@@ -19,18 +18,21 @@ l. GET - User can check how many kidneys they have and their health
 
 //---------------------------------------------
 
-
 const express = require("express");
 const app = express();
 
-const users = [{
-  name:"John",
-  kidneys:[{
-  healthy: false
-  }]
-}]
+const users = [
+  {
+    name: "John",
+    kidneys: [
+      {
+        healthy: false,
+      },
+    ],
+  },
+];
 app.use(express.json());
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   const johnKidneys = users[0].kidneys;
   const numbersOfKidneys = johnKidneys.length;
   let numberOfHealthyKidneys = 0;
@@ -43,53 +45,52 @@ app.get("/", function(req, res) {
   res.json({
     numbersOfKidneys,
     numberOfHealthyKidneys,
-    numberOfUnhealthyKidneys
+    numberOfUnhealthyKidneys,
   });
- // console.log(johnKidneys);
+  // console.log(johnKidneys);
 });
 app.listen(3000);
 
-app.post("/", function(req, res) {
+app.post("/", function (req, res) {
   const isHealthy = req.body.healthy;
   users[0].kidneys.push({
-    healthy: isHealthy
+    healthy: isHealthy,
   });
   res.json({
-    message: "Kidney added"
-  });})
-  
-app.put("/", function(req, res) {
-  for(let i = 0; i < users[0].kidneys.length; i++) {
-  users[0].kidneys[0].healthy = true;
-}
-res.json({
-  message: "Kidney replaced"
+    message: "Kidney added",
+  });
 });
-})
 
-
-app.delete("/", function(req, res){
-if (isThereAtleastOneUnhealthyKidney()) {
-
-  const newKidenys = [];
+app.put("/", function (req, res) {
   for (let i = 0; i < users[0].kidneys.length; i++) {
-    if (users[0].kidneys[i].healthy) {
-      atleastOneUnhealthyKidney = true;
-      newKidenys.push({
-        healthy: true
-      });
-    }
+    users[0].kidneys[0].healthy = true;
   }
-  users[0].kidneys = newKidenys;  
   res.json({
-    message: "Kidney removed"
+    message: "Kidney replaced",
   });
-} else {
-  res.json({
-    message: "You don't have any unhealthy kidneys"
-  });
-}
-})
+});
+
+app.delete("/", function (req, res) {
+  if (isThereAtleastOneUnhealthyKidney()) {
+    const newKidenys = [];
+    for (let i = 0; i < users[0].kidneys.length; i++) {
+      if (users[0].kidneys[i].healthy) {
+        atleastOneUnhealthyKidney = true;
+        newKidenys.push({
+          healthy: true,
+        });
+      }
+    }
+    users[0].kidneys = newKidenys;
+    res.json({
+      message: "Kidney removed",
+    });
+  } else {
+    res.json({
+      message: "You don't have any unhealthy kidneys",
+    });
+  }
+});
 function isThereAtleastOneUnhealthyKidney() {
   let AtleastOneUnhealthyKidney = false;
   for (let i = 0; i < users[0].kidneys.length; i++) {
@@ -97,5 +98,5 @@ function isThereAtleastOneUnhealthyKidney() {
       AtleastOneUnhealthyKidney = true;
     }
   }
-   return AtleastOneUnhealthyKidney;
+  return AtleastOneUnhealthyKidney;
 }

@@ -73,7 +73,7 @@ console.log(
     lastName2: "Sh",
     email2: "scam@gmail.com",
     age2: 34,
-  })
+  }),
 );
 
 // * Here is how we should do it with the help of interfaces User interface. Interface lets you combine multiple fields in a simple type.
@@ -211,7 +211,7 @@ console.log(
       lastName: "Singh",
       age: 18,
     },
-  ])
+  ]),
 );
 
 //* ------------------------ Enums -------------------------------
