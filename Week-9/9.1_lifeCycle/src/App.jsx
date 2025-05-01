@@ -4,7 +4,15 @@ import React, { useEffect, useState } from "react";
 function App() {
   //return <MyComponent />; //functional component
   //return <MyAnotherComponent />; // class component
-  return <MyComponentLifeCycle />;
+  //return <MyComponentLifeCycle />;
+  const [render, setRender] = useState(true);
+
+  useEffect(() => {
+    setInterval(() => {
+      setRender((r) => !r);
+    }, 5000);
+  }, []);
+  return render ? <MyComponentClassLifeCycle /> : <div>bye</div>;
 }
 
 //* This is the example of a functional component showing how they are written and used in react
@@ -54,11 +62,22 @@ function MyComponentLifeCycle() {
     return () => {
       //* this function runs for cleanup meaning when it runs to cleanup previous effects
 
-      console.log("MyComponent lifeCycle unmounted !!");
+      console.error("MyComponent lifeCycle unmounted !!");
     };
   }, []);
-
   return <div>Hey, MyComponent lifeCycle</div>;
+}
+
+class MyComponentClassLifeCycle extends React.Component {
+  componentDidMount() {
+    console.log("MyComponentClassLifeCycle mounted !!");
+  }
+  componentWillUnmount() {
+    console.error("MyComponentClassLifeCycle unmounted !!");
+  }
+  render() {
+    return <div>Hey, MyComponentClassLifeCycle</div>;
+  }
 }
 
 export default App;
