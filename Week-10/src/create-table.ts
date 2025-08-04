@@ -1,7 +1,7 @@
 import { getClient } from "./utils";
 
 async function createTable() {
-    const createUserTableQuery = `
+  const createUserTableQuery = `
         CREATE TABLE users (
             id SERIAL PRIMARY KEY,
             email VARCHAR(255) UNIQUE NOT NULL,
@@ -9,11 +9,11 @@ async function createTable() {
         );
     `;
 
-    const client = await getClient();
+  const client = await getClient();
 
-    await client.query(createUserTableQuery);
+  await client.query(createUserTableQuery);
 
-    const createTodosQuery = `
+  const createTodosQuery = `
         CREATE TABLE todos (
             id SERIAL PRIMARY KEY,
             title TEXT NOT NULL,
@@ -23,12 +23,9 @@ async function createTable() {
         );
     `;
 
+  await client.query(createTodosQuery);
 
-    await client.query(createTodosQuery);
-
-    console.log("Table created successfully!");
+  console.log("Table created successfully!");
 }
-
-
 
 createTable();
